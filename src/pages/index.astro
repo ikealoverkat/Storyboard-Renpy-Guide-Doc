@@ -1,5 +1,10 @@
 ---
+import Prose from './Prose.astro';
 import { Content } from './StoryboardRenpyGuide.md/';
+import Layout from '../layouts/Layout.astro';
 ---
-
-<Content />
+<Layout>
+    <Prose>
+        <Content />
+    </Prose>
+</Layout>
