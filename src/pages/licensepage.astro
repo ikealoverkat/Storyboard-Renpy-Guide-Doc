@@ -1,7 +1,14 @@
 ---
+import Prose from './Prose.astro';
 import { Content } from './LICENSE.md/';
+import Layout from '../layouts/Layout.astro';
+import Footer from './Footer.astro/';
+import Header from './Header.astro/';
 ---
-
-<div>
-    <Content />
-</div>
+<Layout>
+    <Header />
+	<Prose>
+        <Content />
+    </Prose>
+	<Footer />
+</Layout>

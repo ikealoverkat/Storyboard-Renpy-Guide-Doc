@@ -1,15 +1,42 @@
 ---
 title: "Storyboard Ren'Py Guide Document"
 author: "Kat Wang"
-date: "08/27/25" 
+date: "08/28/25" 
 ---
+![Storyboard Banner](../assets/storyboard-banner.png)
 
 # Storyboard Ren'Py Guide Document
 Hi everyone! It's Kat (@kat on Slack) and this is the written guide to How to Start Making a Ren'Py Game: adapted from the Ren'Py Quickstart Documentation & Shyla (@sprinkles on Slack)'s Ren'Py Tutorial Slideshow :D  (view her slideshow [here](https://www.canva.com/design/DAGwqnw-zrA/nUfHDVqLM1OQacNYaXwrtw/edit?utm_content=DAGwqnw-zrA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton))
 
+I made this guide (NO SHADE I LOVE YOUR SLIDE SM SHYLA IT'S JUST ME) because I prefer reading docs to slides/YT tutorials, but sometimes reading official documentation can be super hard & confusing, especially when they throw a bunch of terms at you that you don't understand 'cause you're a beginner D: as a certified ex-struggler, I decided to write this document to break the confusing documentation curse LOL & after this you should hopefully understand enough to look at the official documentation and (mostly) understand!!
+
 If you ever need help, have questions, or are running into problems while creating your game, reach out on #storyboard, or DM me (@kat) or any of the other organizers on the Hack Club Slack! We're happy to help answer any questions you have :P 
 
-> I (Kat) made this which means I get to license it! View the license <a href="./licensepage.astro">here :D</a>
+> I (Kat) made this which means I get to license it! View the license <a href="/licensepage/">here :D</a>
+
+## Table of Contents
+Trying to find something? Here's a table of contents!
+1. [Downloading VSCode](#before-we-start)
+2. [Downloading Ren'Py](#step-1-download-renpy)
+3. [Example Game](#step-2-lets-check-out-an-example-game)
+4. [Creating Your Game](#step-3-creating-your-game)
+    - [Ren'Py Launcher Tour](#renpy-launcher-tour-in-detail)
+5. [VSCode Setup](#step-4-vscode-setup-continued)
+6. [GitHub Setup](#step-5-github-desktop-setup)
+7. [Time to Code!!](#step-6-time-to-code)
+    - [Comments](#comments)
+    - [Label Statements](#label-statements)
+    - [Say Statements](#say-statements)
+    - [Characters](#characters)
+    - [Images](#images)
+    - [Positions](#positions)
+    - [Audio](#audio)
+    - [Pausing & Ending Your Game](#pausing--ending-your-game)
+    - [Let's Put It All Together!](#lets-put-it-all-together)
+    - [Using Menu (Making Options for the Player)](#using-menu)
+        - [Python & Variables in Menu](#python--variables-in-menu)
+8. [Stuck? Here's some ideas for your game!](#step-7-hmm-what-else)
+9. [You did it! + More Resources/Docs](#step-8-you-did-it--more-documentation-0)
 
 ## Before we start...
 Download Visual Studio Code! (link [here](https://code.visualstudio.com/download))
@@ -54,7 +81,7 @@ Exciting!! To make your game, Click "+ Create New Project" under the projects.
 #### Name your project, then click _continue_ in the bottom right!
 When Ren'Py asks you what you want your game resolution to be, select **1920x1080** and click _Continue_ (This is important because you'll want to make the canvas size of all your backgrounds 1920x1080 so your backgrounds fit your game!)
 Next, select a project directory (aka any folder you want - or create one called RenPy games! this directory will house _all_ your future Ren'Py games as well.)
-Then, choose a colour scheme! Select a colour and click_Continue_ in the bottom right. Don't stress too hard about this - you can always change the colours and designs of everything in your game later!
+Then, choose a colour scheme! Select a colour and click _Continue_ in the bottom right. Don't stress too hard about this - you can always change the colours and designs of everything in your game later!
 ### Now that you've set up, your project name should be on the left sidebar with "Tutorial" and "The Question"!
 If you don't see it, press _refresh_.
 P.S. Don’t worry if you don’t see your color scheme, we’re not inside your game yet! We're still in the RenPy launcher.
@@ -152,7 +179,7 @@ Label statements name a spot in the program. Add labels to skip to different par
 There are 2 types of say statements: 
 - Narration: "This is what the narrator said!"
 - Dialogue: "Karbohydrate" "This is what Karbohydrate said!" 
-- When a character is saying something, you want to first put their name in quotation marks (or a variable that represents them), and then put what they say in another pair of quotation marks.
+- When a character is saying something, you want to first put their name in quotation marks (or a constant that represents them), and then put what they say in another pair of quotation marks.
 - You only need to add one pair of quotation marks for the narrator, because there is no name to put first. (it's just the narrator!)
 If your (string dialogue or narration text has a quotation mark in it ("like this")), put a backslash \ before it.
 
@@ -163,10 +190,10 @@ For example:
 ![script.rpy Say Statement Example](../assets/say-example.png)
 
 ### Characters
-Remember how I said you can use a variable that represents a character? Now let's go through that!
+Remember how I said you can use a constant that represents a character? Now let's go through that!
 
-Imagine typing out every character’s name every single time. You would have to type that out SO many times... it'd be terrible. Instead, define characters at the top of script.rpy. Give them a name, accent color, and shortened name to type. this shortened name is often called a **variable** in coding. 
-> note: variables are used throughout coding across various languages, not just Ren'Py!
+Imagine typing out every character’s name every single time. You would have to type that out SO many times... it'd be terrible. Instead, define characters at the top of script.rpy. Give them a name, accent color, and shortened name to type. this shortened name is often called a **constant** in coding. 
+> note: constants are used throughout coding across various languages, not just Ren'Py!
 
 for example: define k = Character(‘Kat’, color=“#ccccff”)
 
@@ -186,10 +213,16 @@ Karbohydrate's name is shortened as kr, and Kashyap is shortened to kash to make
 
 Because there's no character name in the last line, the narrator will say the last line!
 
-> note: when you have multiple characters with the same starting letter, it's good to make their variable/shortened names different & distinguishable, so you can tell who's who at a glance & not make any confusing typos.
+> note: when you have multiple characters with the same starting letter, it's good to make their constant/shortened names different & distinguishable, so you can tell who's who at a glance & not make any confusing typos.
 > for example:
-> good variable names: kr (Karbohydrate), kash (Kashyap)
-> bad variable names: ka (Karbohydrate), ks (Kashyap) (not only are the variables very similar, a and s are also right next to eachother on the keyboard, so it'll be super easy to make typos!!! D:)
+> good constant names: kr (Karbohydrate), kash (Kashyap)
+> bad constant names: ka (Karbohydrate), ks (Kashyap) (not only are the constants very similar, a and s are also right next to eachother on the keyboard, so it'll be super easy to make typos!!! D:)
+
+> note: Wait, what's the difference between a constant and a variable?? (Variables are discussed [later](#python--variables-in-menu) in this document, but if you already sorta know what they are and are confused about the difference between the two, this might help!)
+>
+> Well, constants are defined *once* and cannot be changed throughout the game (like the Character constants we discussed earlier, the maximum amount of health in a healthbar, or the game title!), so their value stays *constant*, but variables can change throughout the game. (ex. amount of money/health a character has, the location of the character, a score, etc.)
+>
+> TLDR: both variables & constant are a little word/phrase you use to represent something! However, the value of the things variables represent vary, and the value of the things constants represent stay constant :D (the name kinda explains it lol)
 
 ### Images
 Yay! Now our characters are speaking, but they... don't really exist... and there's no settings for them to be either... How do we solve this? With images! Let's add pictures to our *visual* novel :D
@@ -233,7 +266,7 @@ Now that we have the images, how do we add them to our game?? Well, we first hav
 Before we start, a quick note...
 > note: let's say you uploaded an image called _amber super happy.webp_, but you don't wanna type allat... super happy? that's too wordy! Well, there's a solution for that! at the top of your code, you can write:
 >
-> ``image amber happy = "amber super happy.webp"``
+> `image amber happy = "amber super happy.webp"`
 >
 > so you can simply use _amber happy_ to use that image instead! 
 
@@ -438,7 +471,7 @@ play sound FILENAME3
 
 ```
 
-(click me for extra resources! :O)[https://www.renpy.org/doc/html/audio.html]
+[click me for extra resources! :O](https://www.renpy.org/doc/html/audio.html)
 
 ### Pausing & Ending Your Game
 Pausing your game is pretty self-explanatory!
@@ -548,6 +581,13 @@ Maybe you want to keep track of how many points or how much money a character ha
 
 You can also use if/elif/else statements in Ren'Py instead of labels!
 > note: remember to indent...
+
+> note: Wait, what's the difference between a constant and a variable?? Well, constants are defined *once* and cannot be changed throughout the game (like the Character constants we discussed earlier, the maximum amount of health in a healthbar, or the game title!), so their value stays *constant*, but variables can change throughout the game. (ex. amount of money/health a character has, the location of the character, a score, etc.)
+>
+> TLDR: both variables & constant are a little word/phrase you use to represent something! However, the value of the things variables represent vary, and the value of the things constants represent stay constant :D (the name kinda explains it lol)
+>
+> P.S. yes this note was also said [earlier](#characters) when I was talking about defining characters... I just copy pasted it because it's important for both of these parts :'D
+
 example (but with variables):
 ```
 menu:
@@ -593,11 +633,15 @@ You can learn how to customize [buttons and other assets](https://www.renpy.org/
 
 When you're done your supercool game and want others to check it out, check out my [guide on how to ship your game on itch.io!](https://docs.google.com/presentation/d/1EVhaEfpMS_GuYQo0u2su8s9y8YBbK1J678x35hwhVvU/edit?slide=id.p1#slide=id.p1)
 
-Feel free to ask for help in #storyboard or dm me (@kat, kat wang) on Hack Club Slack! Thanks again to Shyla (@sprinkles) for making the [original presentation](https://www.canva.com/design/DAGwqnw-zrA/nUfHDVqLM1OQacNYaXwrtw/edit?ui=eyJEIjp7IlAiOnsiQiI6ZmFsc2V9fX0) that I adapted into this document :D
+Feel free to ask for help in #storyboard or dm me (@kat, kat wang)/another Storyboard organizer on Hack Club Slack! Thanks again to Shyla (@sprinkles) for making the [original presentation](https://www.canva.com/design/DAGwqnw-zrA/nUfHDVqLM1OQacNYaXwrtw/edit?ui=eyJEIjp7IlAiOnsiQiI6ZmFsc2V9fX0) that I adapted into this document :D
 
 Have fun making your games!!!
-> the last note: remember to indent. 
+> the last note: remember to indent properly. 
 >
 >  ☆ sincerely, kat the (unofficial but should be official) indent fairy
 
-\- kat :3
+\- kat & the storyboard team :3
+
+this document is licensed under the MIT license. [see the full license here](/licensepage)
+
+[⇧ back to top](#storyboard-renpy-guide-document)
